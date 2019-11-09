@@ -17,3 +17,67 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+let axiosPromiseCard = axios.get("https://lambda-times-backend.herokuapp.com/articles");
+
+
+function createCard(hLine, aPhoto, aName) {
+    const card = document.createElement('div');
+    const headline = document.createElement('div');
+    const authorDiv = document.createElement('div');
+    const imgContainer = document.createElement('div');
+    const img = document.createElement('img');
+    const authorSpan = document.createElement('span');
+
+    card.classList.add('card')
+    headline.classList.add('headline')
+    authorDiv.classList.add('author')
+    imgContainer.classList.add('img-container')
+
+    headline.textContent = hLine
+    img.src = aPhoto
+    authorSpan.textContent = aName
+
+    card.appendChild(headline)
+    card.appendChild(authorDiv)
+    authorDiv.appendChild(imgContainer)
+    imgContainer.appendChild(img)
+    authorDiv.appendChild(authorSpan)
+
+    return card;
+}
+
+const cardObject = document.querySelector('.cards-container');
+
+axiosPromiseCard.then(response => {
+    let articlesObject = response.data.articles;
+    console.log(articlesObject);
+
+    //get the name of each object key in case they change in the future
+    let keyNames = Object.keys(articlesObject);
+    console.log(keyNames);
+    console.log('start of arrays');
+
+    //get all the headlines
+    let headlineArray = [];
+
+    //headline authorPhoto, authorName
+    //forEach of the keyNames create new object 
+
+    keyNames.forEach(itemKey => {
+        newArray = articlesObject[itemKey];
+        console.log(newArray)
+        var ArrayHeadlines = newArray.map(function (item) { return item.headline});
+        var ArrayauthorPhoto = newArray.map(function (item) { return item.authorPhoto});
+        var ArrayauthorName = newArray.map(function (item) { return item.authorName});
+    
+        var i = 0;
+        for (i = 0; i < ArrayauthorPhoto.length; i++) {
+            cardObject.appendChild(createCard(ArrayHeadlines[i], ArrayauthorPhoto[i], ArrayauthorName[i]));
+        }
+    })
+  });
+
+
+
+
