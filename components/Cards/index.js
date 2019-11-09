@@ -60,85 +60,24 @@ axiosPromiseCard.then(response => {
 
     //get all the headlines
     let headlineArray = [];
-   
-    console.log(articlesObject.bootstrap);
-    newArray = articlesObject.bootstrap;
-    var ArrayHeadlines = newArray.map(function (item) { return item.headline});
-    var ArrayauthorPhoto = newArray.map(function (item) { return item.authorPhoto});
-    var ArrayauthorName = newArray.map(function (item) { return item.authorName});
 
-    var i = 0;
-    for (i = 0; i < ArrayauthorPhoto.length; i++) {
-        cardObject.appendChild(createCard(ArrayHeadlines[i], ArrayauthorPhoto[i], ArrayauthorName[i]));
-    }
+    //headline authorPhoto, authorName
+    //forEach of the keyNames create new object 
 
+    keyNames.forEach(itemKey => {
+        newArray = articlesObject[itemKey];
+        console.log(newArray)
+        var ArrayHeadlines = newArray.map(function (item) { return item.headline});
+        var ArrayauthorPhoto = newArray.map(function (item) { return item.authorPhoto});
+        var ArrayauthorName = newArray.map(function (item) { return item.authorName});
     
-    console.log(articlesObject.javascript);
-    newArray = articlesObject.javascript;
-    var ArrayHeadlines = newArray.map(function (item) { return item.headline});
-    var ArrayauthorPhoto = newArray.map(function (item) { return item.authorPhoto});
-    var ArrayauthorName = newArray.map(function (item) { return item.authorName});
-
-    var i = 0;
-    for (i = 0; i < ArrayauthorPhoto.length; i++) {
-        cardObject.appendChild(createCard(ArrayHeadlines[i], ArrayauthorPhoto[i], ArrayauthorName[i]));
-    }
-
-    console.log(articlesObject.technology);
-    newArray = articlesObject.technology;
-    var ArrayHeadlines = newArray.map(function (item) { return item.headline});
-    var ArrayauthorPhoto = newArray.map(function (item) { return item.authorPhoto});
-    var ArrayauthorName = newArray.map(function (item) { return item.authorName});
-
-    var i = 0;
-    for (i = 0; i < ArrayauthorPhoto.length; i++) {
-        cardObject.appendChild(createCard(ArrayHeadlines[i], ArrayauthorPhoto[i], ArrayauthorName[i]));
-    }
-
-    console.log(articlesObject.jquery);
-    newArray = articlesObject.jquery;
-    var ArrayHeadlines = newArray.map(function (item) { return item.headline});
-    var ArrayauthorPhoto = newArray.map(function (item) { return item.authorPhoto});
-    var ArrayauthorName = newArray.map(function (item) { return item.authorName});
-
-    var i = 0;
-    for (i = 0; i < ArrayauthorPhoto.length; i++) {
-        cardObject.appendChild(createCard(ArrayHeadlines[i], ArrayauthorPhoto[i], ArrayauthorName[i]));
-    }
-   
-    console.log(articlesObject.node);
-    newArray = articlesObject.node;
-    var ArrayHeadlines = newArray.map(function (item) { return item.headline});
-    var ArrayauthorPhoto = newArray.map(function (item) { return item.authorPhoto});
-    var ArrayauthorName = newArray.map(function (item) { return item.authorName});
-
-    var i = 0;
-    for (i = 0; i < ArrayauthorPhoto.length; i++) {
-        cardObject.appendChild(createCard(ArrayHeadlines[i], ArrayauthorPhoto[i], ArrayauthorName[i]));
-    }
-
-
-
-    // function ArticleMaker(object) {
-    //     this.headline = object.headline;
-    // }
-
-//forEach of the keyNames create new object 
-//let newObject = articlesObject.keyNames[0]
-
-
-
-
-    keyNames.forEach(item => {
+        var i = 0;
+        for (i = 0; i < ArrayauthorPhoto.length; i++) {
+            cardObject.appendChild(createCard(ArrayHeadlines[i], ArrayauthorPhoto[i], ArrayauthorName[i]));
+        }
     })
-
-//map new array from object for each headline
-
-
-
   });
 
-  //headline authorPhoto, authorName
 
 
 
